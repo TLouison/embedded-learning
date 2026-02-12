@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <format>
 #include <memory>
+#include <thread>
 
 using json = nlohmann::json;
 
@@ -42,8 +43,17 @@ int main(int argc, char *argv[])
              { 
             led->set_low();
             res.set_content(get_generic_success().dump(), "application/json"); });
+    svr.Post("/stop", [&svr](const httplib::Request &, httplib::Response &res)
+             { svr.stop(); });
 
-    svr.listen("0.0.0.0", 8080);
+    // Run the server in a separate thread
+    std::thread t([&]()
+                  {
+        std::cout << "Server listening on http://localhost:8080" << std::endl;
+        // This call is blocking
+        if (!svr.listen("0.0.0.0", 8080)) {
+            std::cerr << "Server stopped in error state" << std::endl;
+        } });
 
     gpioTerminate();
     return 0;
