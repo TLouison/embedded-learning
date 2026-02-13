@@ -48,4 +48,5 @@ Of note:
     - CMakeLists.txt
     - CMakePresets.json
     - `cmake --profile default && cmake --build build`
+    - Using `vcpkg` to install third-party libaries `cpp-httplib` and `nlohmann-json`)
 - C++ lambda functions
