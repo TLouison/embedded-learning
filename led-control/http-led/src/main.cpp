@@ -55,6 +55,10 @@ int main(int argc, char *argv[])
             std::cerr << "Server stopped in error state" << std::endl;
         } });
 
+    // Once the /stop command is sent the thread will be joinable
+    t.join();
+    std::cout << "Server has shut down." << std::endl;
+
     gpioTerminate();
     return 0;
 }
