@@ -1,3 +1,6 @@
 [submodule "led-control"]
 	path = led-control
 	url = https://github.com/TLouison/led-control
+[submodule "freertos-ev-charger"]
+	path = freertos-ev-charger
+	url = git@github.com:TLouison/freertos-ev-charger.git
