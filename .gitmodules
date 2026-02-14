@@ -1,0 +1,3 @@
+[submodule "led-control"]
+	path = led-control
+	url = https://github.com/TLouison/led-control
